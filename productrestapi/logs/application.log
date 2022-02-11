@@ -238,3 +238,9 @@
 2022-02-11 14:40:10.456  INFO 20940 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-02-11 14:40:10.483  INFO 20940 --- [main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@448b808a{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
 2022-02-11 14:40:10.498  INFO 20940 --- [main] c.d.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 4.414 seconds (JVM running for 5.459)
+2022-02-11 14:45:37.296  INFO 20940 --- [RMI TCP Connection(15)-127.0.0.1] o.e.jetty.server.AbstractConnector       : Stopped ServerConnector@448b808a{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-11 14:45:37.297  INFO 20940 --- [RMI TCP Connection(15)-127.0.0.1] org.eclipse.jetty.server.session         : node0 Stopped scavenging
+2022-02-11 14:45:37.299  INFO 20940 --- [RMI TCP Connection(15)-127.0.0.1] o.e.j.s.h.ContextHandler.application     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-02-11 14:45:37.300  INFO 20940 --- [RMI TCP Connection(15)-127.0.0.1] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@644d1b61{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.17277250604080525095/],STOPPED}
+2022-02-11 14:45:37.309  INFO 20940 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-11 14:45:37.319  INFO 20940 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
