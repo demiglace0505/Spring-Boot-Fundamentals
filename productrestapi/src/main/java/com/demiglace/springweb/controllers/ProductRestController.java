@@ -2,6 +2,8 @@ package com.demiglace.springweb.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,9 @@ import com.demiglace.springweb.repos.ProductRepository;
 
 @RestController
 public class ProductRestController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
+	
 	@Autowired
 	ProductRepository repository;
 
@@ -24,6 +29,7 @@ public class ProductRestController {
 
 	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
 	public Product getProduct(@PathVariable("id") int id) {
+		LOGGER.info("finding product by ID" + id);
 		return repository.findById(id).get();
 	}
 
