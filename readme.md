@@ -19,6 +19,9 @@
       - [Thymeleaf Syntax](#thymeleaf-syntax)
       - [Sending data to the Template](#sending-data-to-the-template)
       - [HTML forms](#html-forms)
+  - [Database Caching](#database-caching)
+  - [Spring Batch](#spring-batch)
+      - [CSV to Database](#csv-to-database)
 
 ## Spring Boot Basics
 
@@ -530,4 +533,357 @@ To use HTML forms inside a Thymeleaf template, we can use Thymeleaf tags **th:ob
 		System.out.println(student.getScore());
 		return mav;
 	}
+```
+
+## Database Caching
+
+To enable caching, Spring Boot uses third party caching providers such as Hazelcast. We being by adding the **spring-boot-starter-cache** and **hazelcast** dependencies.
+
+```xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.hazelcast/hazelcast -->
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-spring</artifactId>
+		</dependency>
+```
+
+Afterwards, we create the cache configuration class which is a Spring Bean that will return a type of HazelCast Config.
+
+```java
+@Configuration
+public class ProductCacheConfig {
+	@Bean
+	public Config cacheConfig() {
+		return new Config()
+				.setInstanceName("hazel-instance")
+				.addMapConfig(new MapConfig().setName("product-cache")
+				.setTimeToLiveSeconds(3000));
+	}
+}
+```
+
+To enable caching, we annotate our entrypoint with the **@EnableCaching** annotation. Then in our model class, we need to implement the **Serializable** interface.
+
+```java
+@SpringBootApplication
+@EnableCaching
+public class ProductrestapiApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(ProductrestapiApplication.class, args);
+	}
+}
+
+@Entity
+public class Product implements Serializable {
+	private static final long serialVersionUID = 1L;
+```
+
+Then in our rest controller, we use the **@Cacheable** which we provide with the cache name according to the one defined in the configuration and **Transactional** annotations on our get controller endpoints. In our delete endpoint, we use **@CacheEvict**
+
+```java
+	@Cacheable("product-cache")
+	@Transactional(readOnly = true)
+	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
+	public Product getProduct(@PathVariable("id") int id) {
+		LOGGER.info("finding product by ID" + id);
+		return repository.findById(id).get();
+	}
+
+  @CacheEvict("product-cache")
+	@RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
+	public void deleteProduct(@PathVariable("id") int id) {
+		repository.deleteById(id);
+	}
+```
+
+## Spring Batch
+
+A batch process is a bunch of tasks that are required for a project. The main task in Spring Batch Framework is called a **Job**, which contains multiple steps with each step that takes care of a particular task. Each step is comprised of:
+
+1. ItemReader - responsible for reading data from a database, file system, message queue, etc
+2. ItemProcessor - takes the data of the ItemReader and apply business logic
+3. ItemWriter - write the data to the database, file system, message queue etc.
+
+All these will be stored into a **JobRepository** by Spring Batch. We then use **JobLauncher** to run a particular job. We create a Job using a **JobBuilderFactory** wherein we will tell the job the steps. We create a step using a **StepBuilderFactory**. We configure everything in a Java based configuration file **BatchConfig**.
+
+The dependencies needed for the sample project are **spring-boot-starter-batch** and **h2**. We start with creating the Reader class which implements the **ItemReader** interface from Spring. In this reader class, we loop through an array and return the object.
+
+```java
+public class Reader implements ItemReader<String> {
+	private String[] courses = {"Java", "React", "Nodejs"};
+	private int count;
+
+	@Override
+	public String read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+    System.out.println("INSIDE READ METHOD");
+		if (count<courses.length) {
+			return courses[count++];
+		} else {
+			count = 0;
+		}
+		return null;
+	}
+}
+```
+
+Next is the Processor class which implements the **ItemProcessor** interface. In our case, it will take in a String and return a String type. We will be transforming the input String to uppercase
+
+```java
+public class Processor implements ItemProcessor<String, String> {
+	@Override
+	public String process(String item) throws Exception {
+		System.out.println("Inside Process");
+		return "PROCESS " + item.toUpperCase();
+	}
+}
+```
+
+The Writer class will implement **ItemWriter** and in the write method, it will get a list of Strings which we will write out to the console.
+
+```java
+public class Writer implements ItemWriter<String> {
+	@Override
+	public void write(List<? extends String> items) throws Exception {
+		System.out.println("INSIDE WRITE");
+		System.out.println("Writing Data: " + items);
+	}
+}
+```
+
+We then proceed with writing the JobListener, which will implement **JobExecutionListener** which has 2 methods: beforeJob and afterJob.
+
+```java
+public class MyJobListener implements JobExecutionListener {
+	@Override
+	public void beforeJob(JobExecution jobExecution) {
+		System.out.println("JOB STARTED");
+	}
+
+	@Override
+	public void afterJob(JobExecution jobExecution) {
+		System.out.println("JOB ENDED " + jobExecution.getStatus().toString());
+	}
+}
+```
+
+We then proceed on configuring our batch jobs by creating beans in a separate configuration class. Afterwards we can configure the step for our job with the step() method. Lastly, we will configure the Job with the job() method.
+
+```java
+@Configuration
+public class BatchConfig {
+	@Autowired
+	private StepBuilderFactory sbf;
+	@Autowired
+	private JobBuilderFactory jbf;
+
+	public Job job() {
+		return jbf.get("job1")
+				.incrementer(new RunIdIncrementer())
+				.listener(listener())
+				.start(step())
+				.build();
+	}
+
+	@Bean
+	public Step step() {
+		return sbf.get("step1").<String, String>chunk(1)
+				.reader(reader())
+				.processor(processor())
+				.writer(writer())
+				.build();
+	}
+
+	@Bean
+	public Reader reader() {
+		return new Reader();
+	}
+	@Bean
+	public Writer writer() {
+		return new Writer();
+	}
+	@Bean
+	public Processor processor() {
+		return new Processor();
+	}
+	@Bean
+	public MyJobListener listener() {
+		return new MyJobListener();
+	}
+}
+```
+
+We can now proceed with writing out the test. For this we need to first autowire **JobLauncher** from Spring Batch and inject the Job instance to the test class. We create the job parameters using the **JobParametersBuilder** and pass this into our launcher.
+
+```java
+@SpringBootTest
+class SpringbatchApplicationTests {
+	@Autowired
+	JobLauncher launcher;
+	@Autowired
+	Job job;
+
+	@Test
+	void testBatch() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
+		JobParameters jobParameters = new JobParametersBuilder()
+				.addLong("time", System.currentTimeMillis())
+				.toJobParameters();
+		launcher.run(job,  jobParameters);
+	}
+}
+```
+
+By annotating the entrypoint with **@EnableBatchProcessing**, we can enable Spring Batching and in application.properties, we need to disable spring.batch.job
+
+```java
+@SpringBootApplication
+@EnableBatchProcessing
+public class SpringbatchApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringbatchApplication.class, args);
+	}
+}
+```
+
+```
+spring.batch.job.enabled=false
+```
+
+database schema not being initialized
+spring.batch.initialize-schema=ALWAYS
+
+circular dependency exception
+spring.main.allow-circular-references=true
+
+#### CSV to Database
+
+We can use Spring Batch to copy csv values to a database. The Reader will be reading csv rows and convert it into objects. The Processor will then give a discount to the price of the product, and the Writer will then finally store it to the database. We will be using the builtin **FlatFileItemReader** for our reader and **JdbcBatchItemWriter** for the writer. For this new project, we will be using Spring Batch and MySQL Driver dependencies. We will start with the Product model which will have fields:
+
+```java
+public class Product {
+	private Integer id;
+	private String name;
+	private String description;
+	private Double price;
+```
+
+We then proceed on implementing the Reader. We will be using built in classes and methods from Spring Batch such as **FlatFileItemReader**, **DefaultLineMapper**, **DelimitedLineTokenizer**, **BeanWrapperFieldSetMapper**. The FlatFileItemReader is responsible for reading the csv file and converting it into an object of type Product. We then created DefaultLineMapper that is responsible for mapping each line into a Product object. This is done using the DelimitedLineTokenizer for reading each token separated by comma which sets them into the fields id name description and price, and BeanWrapperFieldSetMapper which sets the created object into Product type.
+
+```java
+@Configuration
+public class BatchConfig {
+
+	@Bean
+	public ItemReader<Product> reader() {
+		FlatFileItemReader<Product> reader = new FlatFileItemReader<>();
+		reader.setResource(new ClassPathResource("products.csv"));
+
+		DefaultLineMapper<Product> lineMapper = new DefaultLineMapper<>();
+		DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
+		lineTokenizer.setNames("id", "name", "description", "price");
+		BeanWrapperFieldSetMapper<Product> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
+		fieldSetMapper.setTargetType(Product.class);
+
+		lineMapper.setLineTokenizer(lineTokenizer);
+		lineMapper.setFieldSetMapper(fieldSetMapper);
+
+    reader.setLineMapper(lineMapper);
+		return reader;
+	}
+}
+```
+
+For the Processor bean, we will simply apply a discount to the product's price by 10%. For this we can use lambda arrow functions.
+
+```java
+	@Bean
+	public ItemProcessor<Product, Product> processor() {
+		return (p->{
+			p.setPrice(p.getPrice()*.9);
+			return p;
+		});
+	}
+```
+
+We then proceed with the Writer. We will be using **JdbcBatchItemWriter** which is responsible for reading the Product bean that will be given to the writer, and then use the values which will be executed in the SQL statement.
+
+```java
+	@Bean
+	public ItemWriter<Product> writer() {
+		JdbcBatchItemWriter<Product> writer = new JdbcBatchItemWriter<>();
+		writer.setDataSource(dataSource);
+		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Product>());
+		writer.setSql("INSERT INTO PRODUCT (id,name,description,price) VALUES (:id,:name,:description,:price)");
+		return writer;
+	}
+```
+
+We will also need to configure the Data Source so that the ItemWriter will be able to connect to the database. We use autowiring and configure our application.properties
+
+```java
+  @Autowired
+	public DataSource dataSource;
+```
+
+```
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=1234
+spring.batch.jdbc.initialize-schema=always
+```
+
+Afterwards we can configure the Step and Job using **JobBuilderFactory** and **StepBuilderFactory**.
+
+```java
+	@Autowired
+	private JobBuilderFactory jbf;
+	@Autowired
+	private StepBuilderFactory sbf;
+
+	@Bean
+	public Job job() {
+		return jbf.get("j1")
+				.incrementer(new RunIdIncrementer())
+				.start(step())
+				.build();
+	}
+
+	@Bean
+	public Step step() {
+		return sbf.get("s1")
+				.<Product,Product>chunk(3)
+				.reader(reader())
+				.processor(processor())
+				.writer(writer())
+				.build();
+	}
+```
+
+We then configure the app to enable Batch Processing using **@EnableBatchProcessing** annotation and adding `spring.batch.job.enabled=false` to application.properties. Then we write out our test class
+
+```java
+@SpringBootTest
+class BatchcsvtodbApplicationTests {
+	@Autowired
+	private JobLauncher launcher;
+	@Autowired
+	private Job job;
+
+	@Test
+	void testBatch() throws JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException, JobParametersInvalidException {
+		launcher.run(job, new JobParametersBuilder()
+				.addLong("time", System.currentTimeMillis())
+				.toJobParameters());
+	}
+}
 ```
