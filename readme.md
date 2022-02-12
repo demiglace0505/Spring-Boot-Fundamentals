@@ -23,6 +23,10 @@
   - [Spring Batch](#spring-batch)
       - [CSV to Database](#csv-to-database)
   - [Unit Testing using MockMvc](#unit-testing-using-mockmvc)
+  - [Messaging and JMS](#messaging-and-jms)
+      - [Messaging Advantages](#messaging-advantages)
+      - [Messaging Models](#messaging-models)
+      - [JMS](#jms)
 
 ## Spring Boot Basics
 
@@ -973,4 +977,73 @@ For the Update method, it is very similar to Create. For Delete, we use **doNoth
 		doNothing().when(repository.deleteById(PRODUCT_ID));
 		mockMvc.perform(delete(PRODUCT_URL + PRODUCT_ID).contextPath(CONTEXT_URL)).andExpect(status().isOk());
 	}
+```
+
+## Messaging and JMS
+
+Messaging is the process of exchanging business data or information across applications or across components within the same application. The Messaging Server (Message Oriented Middleware) ensures that the messages are delivered to the appropriate receiver.
+
+#### Messaging Advantages
+
+Messaging allows applications built with different programming languages communicate with each other seamlessly. The MOM exposes out an API for each platform to exchange messages. This allows **Heterogenous Integration**. This allows microservices to be **Loosely Coupled**. Messaging also **Reduces System Bottlenecks** through asynchronous processing and multiple consumers. We can also make applications **Scalable** by creating multiple consumers as the load increases. Lastly, Messaging allows **Flexibility and Agility** wherein we can replace our services with new applications if needed.
+
+#### Messaging Models
+
+**Point to Point** messaging allows us to send and receive messages both synchronously and asynchronously through virtual channels called queues. The distinguishing feature of p2p messaging is that the message that is produced is consumed only once. Once consumed, it is gone from the queue. It is the JMS provider's responsibility that the message is only consumed by one queue. p2p messaging supports both _Async Fire and Forget_ and _Synchronous request/reply messaging_.
+
+In the **Pub/Sub** model, the messages are published to a virtual channel called **Topic**. In pub/sub, there are multiple applications consuming from the same Topic which means that the same message can be received by multiple subscribers. The pub/sub is a push model wherein the messages are automatically broadcasted to the consumers without them having to send a request.
+
+#### JMS
+
+Before JMS was introduced, developers had to use vendor-specific APIs to communicate and send messages between applications through messaging servers. Using JMS, we can send and receive messages to any messaging service irrespective of vendor. For this project, we use **Apache ActiveMQ** as the messaging broker. The only dependency needed for the project is Spring for Apache ActiveMQ 5.
+
+We start by creating the MessageSender class. To send a message, we use the **JmsTemplate** class from Spring JMS Core. We can opt to have our queue name defined in application.properties as `springjms.myQueue=myQueue`. Using the convertAndSend method of JmsTemplate, we can send a message and it will automatically convert the message object into a JMS text message using hte **convertAndSend()** method.
+
+```java
+@Component
+public class MessageSender {
+	@Autowired
+	private JmsTemplate jmsTemplate;
+
+	@Value("${springjms.myQueue}")
+	private String queue;
+
+	public void send(String message) {
+    System.out.println("MESSAGE SENT: " + message);
+		jmsTemplate.convertAndSend(queue, message);
+	}
+}
+```
+
+The Listener class's receive method will then be annotated with **@JmsListener** from Spring JMS.
+
+```java
+@Component
+public class MyListener {
+	@JmsListener(destination="${springjms.myQueue}")
+	public void receive(String message) {
+		System.out.println("MESSAGE RECEIVED -> " + message);
+	}
+}
+```
+
+We then proceed on writing the test class. To send a message, we need to autowire our sender. We also need to annotate our entrypoint with **@EnableJms** and configure our application.properties
+
+```
+spring.activemq.broker-url=tcp://localhost:61616
+spring.activemq.user=admin
+spring.activemq.password=admin
+```
+
+```java
+@SpringBootTest
+class SpringjmsApplicationTests {
+	@Autowired
+	MessageSender sender;
+
+	@Test
+	void testSendAndReceive() {
+		sender.send("Hello Spring JMS!!!");
+	}
+}
 ```
