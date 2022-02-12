@@ -15,6 +15,10 @@
   - [Logging](#logging)
   - [Health Checks and Metrics](#health-checks-and-metrics)
   - [Spring Security](#spring-security)
+  - [Thymeleaf](#thymeleaf)
+      - [Thymeleaf Syntax](#thymeleaf-syntax)
+      - [Sending data to the Template](#sending-data-to-the-template)
+      - [HTML forms](#html-forms)
 
 ## Spring Boot Basics
 
@@ -401,3 +405,129 @@ Error Key: : 123
 ## Spring Security
 
 We can secure our actuator endpoints by adding dependency **spring-boot-starter-security**. With this, Spring Boot will automatically add security support and authentication.
+
+## Thymeleaf
+
+Thymeleaf is a templating engine that can be used instead of JSP. At runtime, the Thymeleaf engine converts the dynamic portions of our html page into Java and compiled and then executed by the Thymeleaf container.
+
+The necessary dependencies for a Thymeleaf starter project are **spring-boot-starter-web** and **spring-boot-starter-thymeleaf**. We start by creating our Controller class which we annotate with **@Controller**. We add a method that returns the name of our template.
+
+```java
+@Controller
+public class HelloController {
+	@RequestMapping("/hello")
+	public String hello() {
+		return "hello";
+	}
+}
+```
+
+We then create our hello.html html file under `src/main/resources/templates`
+
+```html
+<html>
+  <body>
+    <b>Hello Thymeleaf!</b>
+  </body>
+</html>
+```
+
+#### Thymeleaf Syntax
+
+Thymeleaf uses a special syntax to make html pages dynamic. `@{url}` is for using relative paths. The expression language `${el}` is used to read data that is coming from the controller. Typically, our controllers sends a ModelMap with all the data. `*{propertyName}` is used to bind a model property to the form fields.
+
+#### Sending data to the Template
+
+We create a method in our controller that returns a **ModelAndView** object. We will pass the template name into the ModelAndView object, in this case, _data_ and _studentList_. Using **addObject()** we can pass an object into the template.
+
+```java
+	@RequestMapping("/sendData")
+	public ModelAndView sendData() {
+		ModelAndView mav = new ModelAndView("data");
+		mav.addObject("message", "Doge Doge Doge");
+		return mav;
+	}
+
+	@RequestMapping("/students")
+	public ModelAndView getStudents() {
+		ModelAndView mav = new ModelAndView("studentList");
+		Student student = new Student();
+		student.setName("Doge");
+		student.setScore(100);
+		Student student2 = new Student();
+		student2.setName("Cate");
+		student2.setScore(90);
+
+		List<Student> students = Arrays.asList(student, student2);
+
+		mav.addObject("students", students);
+		return mav;
+	}
+```
+
+In our data.html template, we include thymeleaf's th namespace in order to use Thymeleaf's syntax. We can retrieve the _message_ object that we passed in our controller using `th:text`. The message will be displayed at `http://localhost:8080/sendData`. Likewise, the students array is passed into studentList and we can iterate over using the **th:each** Thymeleaf syntax its properties can be accessed using the `${el}` syntax.
+
+```html
+<!-- data.html -->
+<html xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <title>Data Renderer</title>
+  </head>
+  <body>
+    <div th:text="${message}"></div>
+  </body>
+</html>
+
+<!-- studentList.html -->
+<html xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <title>Student Data</title>
+  </head>
+  <body>
+    <h1>Student Details</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+      <tr th:each="student:${students}">
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.score}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+```
+
+#### HTML forms
+
+To use HTML forms inside a Thymeleaf template, we can use Thymeleaf tags **th:object**. In this case, we specify _student_ which means that if we send a Student object to the template, automatically the values will be taken and will be rendered in the fields marked with **th:field** where we bind the _name_ property. Using **th:action**, we specify that the action endpoint will be at `/saveStudent` which has a corresponding mapping at our controller.
+
+```html
+<body>
+  <form th:object="${student}" th:action="@{/saveStudent}" method="post">
+    Name: <input type="text" th:field="*{name}" /> Score:
+    <input type="text" th:field="*{score}" />
+    <input type="submit" value="save" />
+    <input type="reset" value="reset" />
+  </form>
+</body>
+```
+
+```java
+	@RequestMapping("/studentForm")
+	public ModelAndView displayStudentForm() {
+		ModelAndView mav = new ModelAndView("studentForm");
+		Student student = new Student();
+		mav.addObject("student", student);
+		return mav;
+	}
+
+	@RequestMapping("/saveStudent")
+	public ModelAndView saveStudent(@ModelAttribute Student student) {
+		ModelAndView mav = new ModelAndView("result");
+		System.out.println(student.getName());
+		System.out.println(student.getScore());
+		return mav;
+	}
+```
