@@ -22,6 +22,7 @@
   - [Database Caching](#database-caching)
   - [Spring Batch](#spring-batch)
       - [CSV to Database](#csv-to-database)
+  - [Unit Testing using MockMvc](#unit-testing-using-mockmvc)
 
 ## Spring Boot Basics
 
@@ -886,4 +887,90 @@ class BatchcsvtodbApplicationTests {
 				.toJobParameters());
 	}
 }
+```
+
+## Unit Testing using MockMvc
+
+With **@WebMvcTest**, we will be able to run a test class without running a server. **@MockBean** uses the Mockito framework internally. For this section, we will be testing the ProductRestController methods from productrestapi. We start by creating a jUnit 4 test class ProductRestControllerMvcTest. We start by injecting **MockMvc**. We then mock the repository using **@MockBean** from Spring Mockito. We then proceed on mocking the _findAll_ call. We expect the a JSON of the object, this is done with the help of Jackson package.
+
+```java
+@WebMvcTest
+public class ProductRestControllerMvcTest {
+	@Autowired
+	private MockMvc mockMvc;
+
+	@MockBean
+	private ProductRepository repository;
+
+	private static final String PRODUCT_URL = "/productapi/products/";
+	private static final String CONTEXT_URL = "/productapi";
+	private static final double PRODUCT_PRICE = 2000d;
+	private static final String PRODUCT_DESCRIPTION = "Gaming Laptop";
+	private static final String PRODUCT_NAME = "Legion";
+	private static final int PRODUCT_ID = 1;
+
+	private Product buildProduct() {
+		Product product = new Product();
+		product.setId(PRODUCT_ID);
+		product.setName(PRODUCT_NAME);
+		product.setDescription(PRODUCT_DESCRIPTION);
+		product.setPrice(PRODUCT_PRICE);
+		return product;
+	}
+
+	@Test
+	public void testFindAll() {
+		Product product = buildProduct();
+		List<Product> products = Arrays.asList(product);
+		when(repository.findAll()).thenReturn(products);
+		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+
+		mockMvc.perform(get(PRODUCT_URL).contextPath(CONTEXT_URL)).andExpect(status().isOk())
+				.andExpect(content().json(objectWriter.writeValueAsString(products)));
+	}
+}
+
+```
+
+The simple flow is as follows:
+
+1. MockMvc will make a RESTful call
+2. The mock repository will be injected into the ProductRestController
+3. The method repository.findAll() of the ProductRestController will be mocked with mockito **when()**
+
+For the Create operation, we can use the following test method. In here, we use the **any()** method from Mockito because the returned object will be of a different reference from the original object.
+
+```java
+	@Test
+	public void testCreateProduct() throws JsonProcessingException, Exception {
+		Product product = buildProduct();
+		when(repository.save(any())).thenReturn(product);
+		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		mockMvc.perform(post(PRODUCT_URL).contextPath(CONTEXT_URL)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectWriter.writeValueAsString(product))).andExpect(status().isOk())
+				.andExpect(content().json(objectWriter.writeValueAsString(product)));
+	}
+```
+
+For the Update method, it is very similar to Create. For Delete, we use **doNothing()** since the delete operation returns void.
+
+```java
+  @Test
+	public void testUpdateProduct() throws JsonProcessingException, Exception {
+		Product product = buildProduct();
+		product.setPrice(100);
+		when(repository.save(any())).thenReturn(product);
+		ObjectWriter objectWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		mockMvc.perform(put(PRODUCT_URL).contextPath(CONTEXT_URL)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectWriter.writeValueAsString(product))).andExpect(status().isOk())
+				.andExpect(content().json(objectWriter.writeValueAsString(product)));
+	}
+
+  @Test
+	public void testDeleteProduct() {
+		doNothing().when(repository.deleteById(PRODUCT_ID));
+		mockMvc.perform(delete(PRODUCT_URL + PRODUCT_ID).contextPath(CONTEXT_URL)).andExpect(status().isOk());
+	}
 ```
