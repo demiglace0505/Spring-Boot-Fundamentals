@@ -27,6 +27,7 @@
       - [Messaging Advantages](#messaging-advantages)
       - [Messaging Models](#messaging-models)
       - [JMS](#jms)
+  - [Swagger](#swagger)
 
 ## Spring Boot Basics
 
@@ -1047,3 +1048,41 @@ class SpringjmsApplicationTests {
 	}
 }
 ```
+
+## Swagger
+
+Swagger provides a standard way to document our RESTful web services. It documents how the response object will look like in JSON/YAML. We can either use the Swagger API or hand-write according to Swagger specifications using the Swagger editor. The [Swagger Specification (OpenAPI)](https://swagger.io/docs/specification/about/) defines all the elements that can go into a Swagger document. Swagger also includes a UI that is generated on the fly for testing out REST services. Swagger Codegen allows us to generate code for web services in different programming languages.
+
+[SpringDoc OpenAPI](https://springdoc.org/) makes it easy for us to use Swagger for documenting our REST apis. We just need to add the **springdoc-openapi-ui** dependency to our project. This will automatically go through our RESTful controllers and generate documentations. Once configured, we can see a documentation endpoint at `http://localhost:8080/productapi/v3/api-docs` and the Swagger UI at `http://localhost:8080/productapi/swagger-ui.html`. If we want to, we can change our swagger ui url with the property **springdoc.swagger-ui.path**
+
+We can add more information in our Swagger UI using Swagger Annotations. One such annotation is the **@OpenAPIDefinition**, which we use in the starting point of the application.
+
+```java
+@SpringBootApplication
+@OpenAPIDefinition(info = @Info(title = "Product API", version = "1.0", description = "doge doge doge"))
+public class ProductrestapiApplication {
+```
+
+The **@Tag** and annotation is used in our REST controllers at the class level, **@Operation** at method level, **@Parameter** at parameter level, **@ApiResponse** at the return object.
+
+```java
+@RestController
+@Tag(name = "Product Rest Endpoint")
+public class ProductRestController {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
+
+	@Autowired
+	ProductRepository repository;
+
+	@Cacheable("product-cache")
+	@Transactional(readOnly = true)
+	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
+	@Operation(summary = "Returns a product", description = "takes id, returns single product")
+	public @ApiResponse(description = "Product object") Product getProduct(@Parameter(description = "Id of the product") @PathVariable("id") int id) {
+		LOGGER.info("finding product by ID" + id);
+		return repository.findById(id).get();
+	}
+```
+
+If we want to hide a REST operation or the complete REST endpoint, we use the **@Hidden** annotation.

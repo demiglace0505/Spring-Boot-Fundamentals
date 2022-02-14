@@ -17,7 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demiglace.springweb.entities.Product;
 import com.demiglace.springweb.repos.ProductRepository;
 
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
+@Tag(name = "Product Rest Endpoint")
+//@Hidden
 public class ProductRestController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRestController.class);
@@ -26,6 +34,7 @@ public class ProductRestController {
 	ProductRepository repository;
 
 	@RequestMapping(value = "/products/", method = RequestMethod.GET)
+	@Hidden
 	public List<Product> getProducts() {
 		return repository.findAll();
 	}
@@ -33,7 +42,8 @@ public class ProductRestController {
 	@Cacheable("product-cache")
 	@Transactional(readOnly = true)
 	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
-	public Product getProduct(@PathVariable("id") int id) {
+	@Operation(summary = "Returns a product", description = "takes id, returns single product")
+	public @ApiResponse(description = "Product object") Product getProduct(@Parameter(description = "Id of the product") @PathVariable("id") int id) {
 		LOGGER.info("finding product by ID" + id);
 		return repository.findById(id).get();
 	}

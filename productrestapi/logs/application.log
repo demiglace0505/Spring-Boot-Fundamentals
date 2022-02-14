@@ -1,158 +1,890 @@
-2022-02-12 09:05:40.587  INFO 3440 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 3440 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
-2022-02-12 09:05:40.598  INFO 3440 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
-2022-02-12 09:05:42.063  INFO 3440 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2996ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-02-12 09:05:42.286  INFO 3440 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
-2022-02-12 09:05:42.323  INFO 3440 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
-2022-02-12 09:05:42.585  INFO 3440 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
-2022-02-12 09:05:42.585  INFO 3440 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
-2022-02-12 09:05:42.586  INFO 3440 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 660000ms
-2022-02-12 09:05:42.596  INFO 3440 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@4b325930{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.15717344948810268111/],AVAILABLE}
-2022-02-12 09:05:42.596  INFO 3440 --- [main] org.eclipse.jetty.server.Server          : Started @3531ms
-2022-02-12 09:05:42.659  WARN 3440 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+2022-02-14 17:56:00.555  INFO 16960 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 16960 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
+2022-02-14 17:56:00.561  INFO 16960 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
+2022-02-14 17:56:01.977  INFO 16960 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2793ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-14 17:56:02.121  INFO 16960 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
+2022-02-14 17:56:02.146  INFO 16960 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-14 17:56:02.369  INFO 16960 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-14 17:56:02.369  INFO 16960 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-14 17:56:02.371  INFO 16960 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 660000ms
+2022-02-14 17:56:02.380  INFO 16960 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@6222391a{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.14530978199069556139/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],AVAILABLE}
+2022-02-14 17:56:02.380  INFO 16960 --- [main] org.eclipse.jetty.server.Server          : Started @3196ms
+2022-02-14 17:56:02.460  WARN 16960 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
  --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
-2022-02-12 09:05:42.753  INFO 3440 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
-2022-02-12 09:05:43.049  INFO 3440 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
-2022-02-12 09:05:43.152  INFO 3440 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
-2022-02-12 09:05:43.158  WARN 3440 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
-2022-02-12 09:05:43.482  INFO 3440 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
-2022-02-12 09:05:43.488  INFO 3440 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
-2022-02-12 09:05:46.304  INFO 3440 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
+2022-02-14 17:56:02.664  INFO 16960 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
+2022-02-14 17:56:03.036  INFO 16960 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
+2022-02-14 17:56:03.117  INFO 16960 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
+2022-02-14 17:56:03.122  WARN 16960 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+2022-02-14 17:56:03.407  INFO 16960 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+2022-02-14 17:56:03.412  INFO 16960 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
+2022-02-14 17:56:05.675  INFO 16960 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
 
 Members {size:1, ver:1} [
-	Member [192.168.1.23]:5701 - 1d3a9338-1102-45fc-999e-c02fa2239e71 this
+	Member [192.168.1.23]:5701 - a8ccc425-35b8-4aa6-918e-7f64878b2f6e this
 ]
 
-2022-02-12 09:05:46.318  INFO 3440 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
-2022-02-12 09:05:46.483  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-02-12 09:05:46.732  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-02-12 09:05:46.795  INFO 3440 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-02-12 09:05:46.859  INFO 3440 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
-2022-02-12 09:05:47.076  INFO 3440 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-02-12 09:05:47.257  INFO 3440 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-02-12 09:05:47.829  INFO 3440 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-02-12 09:05:48.963  INFO 3440 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-02-12 09:05:48.970  INFO 3440 --- [main] o.e.jetty.server.AbstractConnector       : Stopped ServerConnector@50a13c2f{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-2022-02-12 09:05:48.970  INFO 3440 --- [main] org.eclipse.jetty.server.session         : node0 Stopped scavenging
-2022-02-12 09:05:48.971  INFO 3440 --- [main] o.e.j.s.h.ContextHandler.application     : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2022-02-12 09:05:48.972  INFO 3440 --- [main] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@4b325930{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.15717344948810268111/],STOPPED}
-2022-02-12 09:05:48.978  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-02-12 09:05:48.984  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-02-12 09:05:48.985  INFO 3440 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is SHUTTING_DOWN
-2022-02-12 09:05:48.988  INFO 3440 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down multicast service...
-2022-02-12 09:05:48.989  INFO 3440 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down connection manager...
-2022-02-12 09:05:48.991  INFO 3440 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down node engine...
-2022-02-12 09:05:49.001  INFO 3440 --- [main] c.hazelcast.instance.impl.NodeExtension  : [192.168.1.23]:5701 [dev] [4.2.4] Destroying node NodeExtension.
-2022-02-12 09:05:49.001  INFO 3440 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast Shutdown is completed in 14 ms.
-2022-02-12 09:05:49.002  INFO 3440 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is SHUTDOWN
-2022-02-12 09:05:49.036 ERROR 3440 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2022-02-14 17:56:05.694  INFO 16960 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
+2022-02-14 17:56:05.848  INFO 16960 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 17:56:06.961 ERROR 16960 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
-***************************
-APPLICATION FAILED TO START
-***************************
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
-Description:
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:330) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:162) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateDefaultDdlAutoProvider.getDefaultDdlAuto(HibernateDefaultDdlAutoProvider.java:42) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.lambda$getVendorProperties$1(HibernateJpaConfiguration.java:130) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings.getDdlAuto(HibernateSettings.java:41) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineDdlAuto(HibernateProperties.java:143) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.getAdditionalProperties(HibernateProperties.java:103) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineHibernateProperties(HibernateProperties.java:95) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.getVendorProperties(HibernateJpaConfiguration.java:132) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:132) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
 
-Web server failed to start. Port 8080 was already in use.
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:949) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:819) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 48 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:156) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 51 common frames omitted
 
-Action:
+2022-02-14 17:56:07.014  INFO 16960 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-14 17:56:07.078  INFO 16960 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-14 17:56:07.305  INFO 16960 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-14 17:56:07.404  INFO 16960 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 17:56:08.429 ERROR 16960 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
 
-2022-02-12 09:06:05.498  INFO 7416 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 7416 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
-2022-02-12 09:06:05.500  INFO 7416 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
-2022-02-12 09:06:06.805  INFO 7416 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2418ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-02-12 09:06:06.983  INFO 7416 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
-2022-02-12 09:06:07.011  INFO 7416 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
-2022-02-12 09:06:07.177  INFO 7416 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
-2022-02-12 09:06:07.177  INFO 7416 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
-2022-02-12 09:06:07.179  INFO 7416 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 600000ms
-2022-02-12 09:06:07.185  INFO 7416 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@7fd4e815{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.17384639158394898552/],AVAILABLE}
-2022-02-12 09:06:07.185  INFO 7416 --- [main] org.eclipse.jetty.server.Server          : Started @2799ms
-2022-02-12 09:06:07.242  WARN 7416 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:949) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:819) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 49 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:156) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 52 common frames omitted
+
+2022-02-14 17:56:08.432  WARN 16960 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:949) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:819) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 49 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:156) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 52 common frames omitted
+
+2022-02-14 17:56:08.442 ERROR 16960 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+2022-02-14 17:56:08.443  INFO 16960 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is SHUTTING_DOWN
+2022-02-14 17:56:08.450  INFO 16960 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down multicast service...
+2022-02-14 17:56:08.451  INFO 16960 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down connection manager...
+2022-02-14 17:56:08.453  INFO 16960 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down node engine...
+2022-02-14 17:56:08.460  INFO 16960 --- [main] c.hazelcast.instance.impl.NodeExtension  : [192.168.1.23]:5701 [dev] [4.2.4] Destroying node NodeExtension.
+2022-02-14 17:56:08.461  INFO 16960 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast Shutdown is completed in 14 ms.
+2022-02-14 17:56:08.461  INFO 16960 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is SHUTDOWN
+2022-02-14 17:56:08.464  INFO 16960 --- [main] org.eclipse.jetty.server.session         : node0 Stopped scavenging
+2022-02-14 17:56:08.466  INFO 16960 --- [main] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@6222391a{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.14530978199069556139/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],STOPPED}
+2022-02-14 17:56:08.498 ERROR 16960 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.15.jar:5.3.15]
+	... 16 common frames omitted
+Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:100) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:54) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:138) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	... 33 common frames omitted
+
+2022-02-14 17:57:05.600  INFO 4016 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 4016 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
+2022-02-14 17:57:05.603  INFO 4016 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
+2022-02-14 17:57:07.012  INFO 4016 --- [main] org.eclipse.jetty.util.log               : Logging initialized @4643ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-14 17:57:07.180  INFO 4016 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
+2022-02-14 17:57:07.202  INFO 4016 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-14 17:57:07.377  INFO 4016 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-14 17:57:07.377  INFO 4016 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-14 17:57:07.378  INFO 4016 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 660000ms
+2022-02-14 17:57:07.384  INFO 4016 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@5657967b{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.28948736920280424/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],AVAILABLE}
+2022-02-14 17:57:07.384  INFO 4016 --- [main] org.eclipse.jetty.server.Server          : Started @5017ms
+2022-02-14 17:57:07.450  WARN 4016 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
  --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
-2022-02-12 09:06:07.338  INFO 7416 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
-2022-02-12 09:06:07.653  INFO 7416 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
-2022-02-12 09:06:07.745  INFO 7416 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
-2022-02-12 09:06:07.751  WARN 7416 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
-2022-02-12 09:06:08.053  INFO 7416 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
-2022-02-12 09:06:08.061  INFO 7416 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
-2022-02-12 09:06:10.530  INFO 7416 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
+2022-02-14 17:57:07.565  INFO 4016 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
+2022-02-14 17:57:07.980  INFO 4016 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
+2022-02-14 17:57:08.096  INFO 4016 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
+2022-02-14 17:57:08.102  WARN 4016 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+2022-02-14 17:57:08.386  INFO 4016 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+2022-02-14 17:57:08.394  INFO 4016 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
+2022-02-14 17:57:11.145  INFO 4016 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
 
 Members {size:1, ver:1} [
-	Member [192.168.1.23]:5701 - 42181585-bf2e-479a-8499-c8c2d83b1b3f this
+	Member [192.168.1.23]:5701 - e5cc7bd3-f870-422d-b00b-b79d9a192352 this
 ]
 
-2022-02-12 09:06:10.540  INFO 7416 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
-2022-02-12 09:06:10.645  INFO 7416 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-02-12 09:06:10.903  INFO 7416 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-02-12 09:06:10.977  INFO 7416 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-02-12 09:06:11.049  INFO 7416 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
-2022-02-12 09:06:11.239  INFO 7416 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-02-12 09:06:11.350  INFO 7416 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-02-12 09:06:11.796  INFO 7416 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-02-12 09:06:12.867  INFO 7416 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-02-12 09:06:12.881  INFO 7416 --- [main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@6cbbb9c4{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-2022-02-12 09:06:12.898  INFO 7416 --- [main] c.d.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 7.727 seconds (JVM running for 8.512)
-2022-02-12 09:06:28.712  INFO 11248 --- [main] c.d.s.ProductrestapiApplicationTests     : Starting ProductrestapiApplicationTests using Java 17 on DESKTOP-7E5NJS8 with PID 11248 (started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
-2022-02-12 09:06:28.713  INFO 11248 --- [main] c.d.s.ProductrestapiApplicationTests     : The following profiles are active: dev
-2022-02-12 09:06:30.546  INFO 7416 --- [hz.hazel-instance.HealthMonitor] c.h.internal.diagnostics.HealthMonitor   : [192.168.1.23]:5701 [dev] [4.2.4] processors=8, physical.memory.total=31.8G, physical.memory.free=17.6G, swap.space.total=0, swap.space.free=0, heap.memory.used=141.0M, heap.memory.free=155.0M, heap.memory.total=296.0M, heap.memory.max=7.9G, heap.memory.used/total=47.64%, heap.memory.used/max=1.73%, minor.gc.count=16, minor.gc.time=52ms, major.gc.count=0, major.gc.time=0ms, load.process=0.00%, load.system=81.89%, load.systemAverage=n/a thread.count=76, thread.peakCount=80, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0, executor.q.client.size=0, executor.q.client.query.size=0, executor.q.client.blocking.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0, executor.q.priorityOperation.size=0, operations.completed.count=1, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0, operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=0, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
-2022-02-12 09:06:31.254  WARN 11248 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+2022-02-14 17:57:11.154  INFO 4016 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
+2022-02-14 17:57:11.265  INFO 4016 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 17:57:12.393 ERROR 4016 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:na]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:330) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:162) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateDefaultDdlAutoProvider.getDefaultDdlAuto(HibernateDefaultDdlAutoProvider.java:42) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.lambda$getVendorProperties$1(HibernateJpaConfiguration.java:130) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings.getDdlAuto(HibernateSettings.java:41) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineDdlAuto(HibernateProperties.java:143) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.getAdditionalProperties(HibernateProperties.java:103) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineHibernateProperties(HibernateProperties.java:95) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.getVendorProperties(HibernateJpaConfiguration.java:132) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:132) ~[spring-boot-autoconfigure-2.6.3.jar:2.6.3]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:949) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:819) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 48 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:156) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 51 common frames omitted
+
+2022-02-14 17:57:12.429  INFO 4016 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-14 17:57:12.484  INFO 4016 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-14 17:57:12.678  INFO 4016 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-14 17:57:12.766  INFO 4016 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 17:57:13.768 ERROR 4016 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:949) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:819) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 49 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:156) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 52 common frames omitted
+
+2022-02-14 17:57:13.769  WARN 4016 --- [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:829) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:449) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:242) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:364) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:476) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-4.0.3.jar:na]
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:181) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:949) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:819) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 49 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:156) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63) ~[mysql-connector-java-8.0.28.jar:8.0.28]
+	... 52 common frames omitted
+
+2022-02-14 17:57:13.771 ERROR 4016 --- [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+2022-02-14 17:57:13.772  INFO 4016 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is SHUTTING_DOWN
+2022-02-14 17:57:13.776  INFO 4016 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down multicast service...
+2022-02-14 17:57:13.777  INFO 4016 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down connection manager...
+2022-02-14 17:57:13.778  INFO 4016 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Shutting down node engine...
+2022-02-14 17:57:13.783  INFO 4016 --- [main] c.hazelcast.instance.impl.NodeExtension  : [192.168.1.23]:5701 [dev] [4.2.4] Destroying node NodeExtension.
+2022-02-14 17:57:13.783  INFO 4016 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast Shutdown is completed in 9 ms.
+2022-02-14 17:57:13.784  INFO 4016 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is SHUTDOWN
+2022-02-14 17:57:13.786  INFO 4016 --- [main] org.eclipse.jetty.server.session         : node0 Stopped scavenging
+2022-02-14 17:57:13.789  INFO 4016 --- [main] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@5657967b{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.28948736920280424/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],STOPPED}
+2022-02-14 17:57:13.817 ERROR 4016 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:732) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:414) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.6.3.jar:2.6.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.6.3.jar:2.6.3]
+	at com.demiglace.springweb.ProductrestapiApplication.main(ProductrestapiApplication.java:12) ~[classes/:na]
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:275) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:175) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:173) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:127) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1460) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1494) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.15.jar:5.3.15]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.15.jar:5.3.15]
+	... 16 common frames omitted
+Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:100) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:54) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:138) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-5.6.4.Final.jar:5.6.4.Final]
+	... 33 common frames omitted
+
+2022-02-14 17:57:47.515  INFO 18464 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 18464 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
+2022-02-14 17:57:47.517  INFO 18464 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
+2022-02-14 17:57:48.763  INFO 18464 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2236ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-14 17:57:48.899  INFO 18464 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
+2022-02-14 17:57:48.920  INFO 18464 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-14 17:57:49.090  INFO 18464 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-14 17:57:49.090  INFO 18464 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-14 17:57:49.091  INFO 18464 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 600000ms
+2022-02-14 17:57:49.097  INFO 18464 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@3dfd6220{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.14700134951818981617/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],AVAILABLE}
+2022-02-14 17:57:49.098  INFO 18464 --- [main] org.eclipse.jetty.server.Server          : Started @2572ms
+2022-02-14 17:57:49.152  WARN 18464 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
  --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
-2022-02-12 09:06:31.449  INFO 11248 --- [main] com.hazelcast.system                     : [192.168.1.23]:5702 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5702
-2022-02-12 09:06:32.027  INFO 11248 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5702 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
-2022-02-12 09:06:32.161  INFO 11248 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5702 [dev] [4.2.4] Using Multicast discovery
-2022-02-12 09:06:32.167  WARN 11248 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5702 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
-2022-02-12 09:06:32.587  INFO 11248 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5702 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
-2022-02-12 09:06:32.597  INFO 11248 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5702 [dev] [4.2.4] [192.168.1.23]:5702 is STARTING
-2022-02-12 09:06:32.881  INFO 11248 --- [main] c.h.i.cluster.impl.MulticastJoiner       : [192.168.1.23]:5702 [dev] [4.2.4] Trying to join to discovered node: [192.168.1.23]:5701
-2022-02-12 09:06:32.907  INFO 7416 --- [hz.hazel-instance.IO.thread-in-0] c.h.i.server.tcp.TcpServerConnection     : [192.168.1.23]:5701 [dev] [4.2.4] Initialized new cluster connection between /192.168.1.23:5701 and /192.168.1.23:64475
-2022-02-12 09:06:32.909  INFO 11248 --- [hz.hazel-instance.IO.thread-in-0] c.h.i.server.tcp.TcpServerConnection     : [192.168.1.23]:5702 [dev] [4.2.4] Initialized new cluster connection between /192.168.1.23:64475 and /192.168.1.23:5701
-2022-02-12 09:06:38.930  INFO 7416 --- [hz.hazel-instance.generic-operation.thread-3] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
+2022-02-14 17:57:49.233  INFO 18464 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
+2022-02-14 17:57:49.508  INFO 18464 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
+2022-02-14 17:57:49.586  INFO 18464 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
+2022-02-14 17:57:49.591  WARN 18464 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+2022-02-14 17:57:49.807  INFO 18464 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+2022-02-14 17:57:49.816  INFO 18464 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
+2022-02-14 17:57:52.444  INFO 18464 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
 
-Members {size:2, ver:2} [
-	Member [192.168.1.23]:5701 - 42181585-bf2e-479a-8499-c8c2d83b1b3f this
-	Member [192.168.1.23]:5702 - 742de15c-830a-40fd-a504-74b147e59ba3
+Members {size:1, ver:1} [
+	Member [192.168.1.23]:5701 - 68806199-d076-4351-b62e-d66bffd3eb26 this
 ]
 
-2022-02-12 09:06:38.936  INFO 11248 --- [hz.hazel-instance.priority-generic-operation.thread-0] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5702 [dev] [4.2.4] 
+2022-02-14 17:57:52.455  INFO 18464 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
+2022-02-14 17:57:52.583  INFO 18464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 17:57:52.812  INFO 18464 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-14 17:57:52.862  INFO 18464 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-14 17:57:52.904  INFO 18464 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-14 17:57:53.052  INFO 18464 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-14 17:57:53.167  INFO 18464 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-14 17:57:53.675  INFO 18464 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-14 17:57:55.143  INFO 18464 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 17:57:55.157  INFO 18464 --- [main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@2f677247{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 17:57:55.172  INFO 18464 --- [main] c.d.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 7.956 seconds (JVM running for 8.646)
+2022-02-14 17:59:06.042  INFO 18464 --- [RMI TCP Connection(11)-127.0.0.1] o.e.jetty.server.AbstractConnector       : Stopped ServerConnector@2f677247{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 17:59:06.042  INFO 18464 --- [RMI TCP Connection(11)-127.0.0.1] org.eclipse.jetty.server.session         : node0 Stopped scavenging
+2022-02-14 17:59:06.043  INFO 18464 --- [RMI TCP Connection(11)-127.0.0.1] o.e.j.s.h.ContextHandler.application     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-02-14 17:59:06.044  INFO 18464 --- [RMI TCP Connection(11)-127.0.0.1] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@3dfd6220{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.14700134951818981617/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],STOPPED}
+2022-02-14 17:59:06.051  INFO 18464 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-14 17:59:06.057  INFO 18464 --- [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-14 17:59:12.805  INFO 2032 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 2032 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
+2022-02-14 17:59:12.807  INFO 2032 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
+2022-02-14 17:59:14.021  INFO 2032 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2193ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-14 17:59:14.175  INFO 2032 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
+2022-02-14 17:59:14.199  INFO 2032 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-14 17:59:14.376  INFO 2032 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-14 17:59:14.376  INFO 2032 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-14 17:59:14.376  INFO 2032 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 660000ms
+2022-02-14 17:59:14.383  INFO 2032 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@1f129467{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.17504188420764332021/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],AVAILABLE}
+2022-02-14 17:59:14.383  INFO 2032 --- [main] org.eclipse.jetty.server.Server          : Started @2556ms
+2022-02-14 17:59:14.437  WARN 2032 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+2022-02-14 17:59:14.520  INFO 2032 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
+2022-02-14 17:59:14.810  INFO 2032 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
+2022-02-14 17:59:14.882  INFO 2032 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
+2022-02-14 17:59:14.886  WARN 2032 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+2022-02-14 17:59:15.073  INFO 2032 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+2022-02-14 17:59:15.078  INFO 2032 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
+2022-02-14 17:59:17.549  INFO 2032 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
 
-Members {size:2, ver:2} [
-	Member [192.168.1.23]:5701 - 42181585-bf2e-479a-8499-c8c2d83b1b3f
-	Member [192.168.1.23]:5702 - 742de15c-830a-40fd-a504-74b147e59ba3 this
+Members {size:1, ver:1} [
+	Member [192.168.1.23]:5701 - f78419b3-d57b-487c-a9c3-1161f0b8a417 this
 ]
 
-2022-02-12 09:06:39.942  INFO 11248 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5702 [dev] [4.2.4] [192.168.1.23]:5702 is STARTED
-2022-02-12 09:06:40.272  INFO 11248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-02-12 09:06:40.640  INFO 11248 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-02-12 09:06:40.746  INFO 11248 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-02-12 09:06:40.876  INFO 11248 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
-2022-02-12 09:06:41.164  INFO 11248 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-02-12 09:06:41.346  INFO 11248 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-02-12 09:06:41.977  INFO 11248 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-02-12 09:06:42.539  INFO 11248 --- [main] org.eclipse.jetty.util.log               : Logging initialized @15701ms to org.eclipse.jetty.util.log.Slf4jLog
-2022-02-12 09:06:45.042  INFO 11248 --- [main] c.d.s.ProductrestapiApplicationTests     : Started ProductrestapiApplicationTests in 16.794 seconds (JVM running for 18.204)
-2022-02-12 09:06:47.890  INFO 11248 --- [hz.ShutdownThread] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5702 [dev] [4.2.4] Running shutdown hook... Current state: ACTIVE
-2022-02-12 09:06:47.896  INFO 7416 --- [hz.hazel-instance.IO.thread-in-0] c.h.i.server.tcp.TcpServerConnection     : [192.168.1.23]:5701 [dev] [4.2.4] Connection[id=1, /192.168.1.23:5701->/192.168.1.23:64475, qualifier=null, endpoint=[192.168.1.23]:5702, alive=false, connectionType=MEMBER, planeIndex=0] closed. Reason: Connection closed by the other side
-2022-02-12 09:06:47.901  INFO 7416 --- [hz.hazel-instance.cached.thread-6] c.h.i.server.tcp.TcpServerConnector      : [192.168.1.23]:5701 [dev] [4.2.4] Connecting to /192.168.1.23:5702, timeout: 10000, bind-any: true
-2022-02-12 09:06:47.903  INFO 11248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-02-12 09:06:47.913  INFO 11248 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2022-02-12 09:06:49.949  INFO 7416 --- [hz.hazel-instance.cached.thread-6] c.h.i.server.tcp.TcpServerConnector      : [192.168.1.23]:5701 [dev] [4.2.4] Could not connect to: /192.168.1.23:5702. Reason: IOException[Connection refused: no further information to address /192.168.1.23:5702]
-2022-02-12 09:06:50.061  INFO 7416 --- [hz.hazel-instance.cached.thread-4] c.h.i.server.tcp.TcpServerConnector      : [192.168.1.23]:5701 [dev] [4.2.4] Connecting to /192.168.1.23:5702, timeout: 10000, bind-any: true
-2022-02-12 09:06:52.104  INFO 7416 --- [hz.hazel-instance.cached.thread-4] c.h.i.server.tcp.TcpServerConnector      : [192.168.1.23]:5701 [dev] [4.2.4] Could not connect to: /192.168.1.23:5702. Reason: IOException[Connection refused: no further information to address /192.168.1.23:5702]
-2022-02-12 09:06:52.212  INFO 7416 --- [hz.hazel-instance.cached.thread-2] c.h.i.server.tcp.TcpServerConnector      : [192.168.1.23]:5701 [dev] [4.2.4] Connecting to /192.168.1.23:5702, timeout: 10000, bind-any: true
-2022-02-12 09:06:54.242  INFO 7416 --- [hz.hazel-instance.cached.thread-2] c.h.i.server.tcp.TcpServerConnector      : [192.168.1.23]:5701 [dev] [4.2.4] Could not connect to: /192.168.1.23:5702. Reason: IOException[Connection refused: no further information to address /192.168.1.23:5702]
-2022-02-12 09:06:54.242  WARN 7416 --- [hz.hazel-instance.cached.thread-2] .h.i.s.t.TcpServerConnectionErrorHandler : [192.168.1.23]:5701 [dev] [4.2.4] Removing connection to endpoint [192.168.1.23]:5702 Cause => java.io.IOException {Connection refused: no further information to address /192.168.1.23:5702}, Error-Count: 5
-2022-02-12 09:06:54.243  INFO 7416 --- [hz.hazel-instance.cached.thread-2] c.h.i.cluster.impl.MembershipManager     : [192.168.1.23]:5701 [dev] [4.2.4] Removing Member [192.168.1.23]:5702 - 742de15c-830a-40fd-a504-74b147e59ba3
-2022-02-12 09:06:54.244  INFO 7416 --- [hz.hazel-instance.cached.thread-2] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
+2022-02-14 17:59:17.562  INFO 2032 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
+2022-02-14 17:59:17.667  INFO 2032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 17:59:17.870  INFO 2032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-14 17:59:17.923  INFO 2032 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-14 17:59:17.965  INFO 2032 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-14 17:59:18.112  INFO 2032 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-14 17:59:18.238  INFO 2032 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-14 17:59:18.667  INFO 2032 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-14 17:59:19.888  INFO 2032 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 17:59:19.899  INFO 2032 --- [main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@6b9fdbc6{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 17:59:19.913  INFO 2032 --- [main] c.d.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 7.412 seconds (JVM running for 8.086)
+2022-02-14 17:59:40.791  INFO 2032 --- [qtp1994634331-31] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 201 ms
+2022-02-14 18:04:59.342  INFO 2032 --- [qtp1994634331-191] c.h.i.p.impl.PartitionStateManager       : [192.168.1.23]:5701 [dev] [4.2.4] Initializing cluster partition table arrangement...
+2022-02-14 18:07:34.052  INFO 2032 --- [RMI TCP Connection(18)-127.0.0.1] o.e.jetty.server.AbstractConnector       : Stopped ServerConnector@6b9fdbc6{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 18:07:34.052  INFO 2032 --- [RMI TCP Connection(18)-127.0.0.1] org.eclipse.jetty.server.session         : node0 Stopped scavenging
+2022-02-14 18:07:34.054  INFO 2032 --- [RMI TCP Connection(18)-127.0.0.1] o.e.j.s.h.ContextHandler.application     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-02-14 18:07:34.055  INFO 2032 --- [RMI TCP Connection(18)-127.0.0.1] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@1f129467{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.17504188420764332021/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],STOPPED}
+2022-02-14 18:07:34.060  INFO 2032 --- [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-14 18:07:34.064  INFO 2032 --- [RMI TCP Connection(18)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-14 18:07:43.695  INFO 18376 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 18376 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
+2022-02-14 18:07:43.697  INFO 18376 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
+2022-02-14 18:07:45.008  INFO 18376 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2467ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-14 18:07:45.161  INFO 18376 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
+2022-02-14 18:07:45.192  INFO 18376 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-14 18:07:45.412  INFO 18376 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-14 18:07:45.412  INFO 18376 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-14 18:07:45.414  INFO 18376 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 600000ms
+2022-02-14 18:07:45.425  INFO 18376 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@3a296107{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.5655964190550768128/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],AVAILABLE}
+2022-02-14 18:07:45.425  INFO 18376 --- [main] org.eclipse.jetty.server.Server          : Started @2885ms
+2022-02-14 18:07:45.507  WARN 18376 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+2022-02-14 18:07:45.630  INFO 18376 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
+2022-02-14 18:07:45.988  INFO 18376 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
+2022-02-14 18:07:46.083  INFO 18376 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
+2022-02-14 18:07:46.088  WARN 18376 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+2022-02-14 18:07:46.340  INFO 18376 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+2022-02-14 18:07:46.345  INFO 18376 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
+2022-02-14 18:07:48.597  INFO 18376 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
 
-Members {size:1, ver:3} [
-	Member [192.168.1.23]:5701 - 42181585-bf2e-479a-8499-c8c2d83b1b3f this
+Members {size:1, ver:1} [
+	Member [192.168.1.23]:5701 - bd08ae07-00ba-435a-b7d2-1ded1db0f5fe this
 ]
 
-2022-02-12 09:06:54.246  INFO 7416 --- [hz.hazel-instance.cached.thread-4] c.h.t.TransactionManagerService          : [192.168.1.23]:5701 [dev] [4.2.4] Committing/rolling-back live transactions of [192.168.1.23]:5702, UUID: 742de15c-830a-40fd-a504-74b147e59ba3
-2022-02-12 09:10:12.052  INFO 7416 --- [RMI TCP Connection(12)-127.0.0.1] o.e.jetty.server.AbstractConnector       : Stopped ServerConnector@6cbbb9c4{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
-2022-02-12 09:10:12.053  INFO 7416 --- [RMI TCP Connection(12)-127.0.0.1] org.eclipse.jetty.server.session         : node0 Stopped scavenging
-2022-02-12 09:10:12.054  INFO 7416 --- [RMI TCP Connection(12)-127.0.0.1] o.e.j.s.h.ContextHandler.application     : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2022-02-12 09:10:12.054  INFO 7416 --- [RMI TCP Connection(12)-127.0.0.1] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@7fd4e815{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.17384639158394898552/],STOPPED}
-2022-02-12 09:10:12.062  INFO 7416 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-02-12 09:10:12.070  INFO 7416 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-14 18:07:48.607  INFO 18376 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
+2022-02-14 18:07:48.731  INFO 18376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 18:07:48.997  INFO 18376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-14 18:07:49.054  INFO 18376 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-14 18:07:49.116  INFO 18376 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-14 18:07:49.331  INFO 18376 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-14 18:07:49.485  INFO 18376 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-14 18:07:49.986  INFO 18376 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-14 18:07:51.387  INFO 18376 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 18:07:51.400  INFO 18376 --- [main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@3becc950{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 18:07:51.416  INFO 18376 --- [main] c.d.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 8.068 seconds (JVM running for 8.876)
+2022-02-14 18:08:07.495  INFO 18376 --- [qtp926188689-33] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 193 ms
+2022-02-14 18:12:16.321  INFO 18376 --- [RMI TCP Connection(14)-127.0.0.1] o.e.jetty.server.AbstractConnector       : Stopped ServerConnector@3becc950{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 18:12:16.322  INFO 18376 --- [RMI TCP Connection(14)-127.0.0.1] org.eclipse.jetty.server.session         : node0 Stopped scavenging
+2022-02-14 18:12:16.323  INFO 18376 --- [RMI TCP Connection(14)-127.0.0.1] o.e.j.s.h.ContextHandler.application     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-02-14 18:12:16.324  INFO 18376 --- [RMI TCP Connection(14)-127.0.0.1] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@3a296107{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.5655964190550768128/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],STOPPED}
+2022-02-14 18:12:16.331  INFO 18376 --- [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-14 18:12:16.339  INFO 18376 --- [RMI TCP Connection(14)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-14 18:14:40.108  INFO 20852 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 20852 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
+2022-02-14 18:14:40.111  INFO 20852 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
+2022-02-14 18:14:41.478  INFO 20852 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2410ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-14 18:14:41.629  INFO 20852 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
+2022-02-14 18:14:41.659  INFO 20852 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-14 18:14:41.936  INFO 20852 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-14 18:14:41.937  INFO 20852 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-14 18:14:41.938  INFO 20852 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 660000ms
+2022-02-14 18:14:41.950  INFO 20852 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@11a3a45f{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.11981668842108798542/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],AVAILABLE}
+2022-02-14 18:14:41.951  INFO 20852 --- [main] org.eclipse.jetty.server.Server          : Started @2889ms
+2022-02-14 18:14:42.059  WARN 20852 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+2022-02-14 18:14:42.188  INFO 20852 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
+2022-02-14 18:14:42.607  INFO 20852 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
+2022-02-14 18:14:42.702  INFO 20852 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
+2022-02-14 18:14:42.708  WARN 20852 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+2022-02-14 18:14:43.003  INFO 20852 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+2022-02-14 18:14:43.010  INFO 20852 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
+2022-02-14 18:14:45.187  INFO 20852 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
+
+Members {size:1, ver:1} [
+	Member [192.168.1.23]:5701 - 1fe39189-f4b0-401c-a45e-79c6d39fad5c this
+]
+
+2022-02-14 18:14:45.200  INFO 20852 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
+2022-02-14 18:14:45.357  INFO 20852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 18:14:45.595  INFO 20852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-14 18:14:45.639  INFO 20852 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-14 18:14:45.698  INFO 20852 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-14 18:14:45.900  INFO 20852 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-14 18:14:46.064  INFO 20852 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-14 18:14:46.576  INFO 20852 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-14 18:14:48.034  INFO 20852 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 18:14:48.048  INFO 20852 --- [main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@73c31181{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 18:14:48.064  INFO 20852 --- [main] c.d.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 8.3 seconds (JVM running for 9.002)
+2022-02-14 18:14:51.084  INFO 20852 --- [qtp1306067302-183] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 156 ms
+2022-02-14 18:19:57.768  INFO 20852 --- [RMI TCP Connection(15)-127.0.0.1] o.e.jetty.server.AbstractConnector       : Stopped ServerConnector@73c31181{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 18:19:57.769  INFO 20852 --- [RMI TCP Connection(15)-127.0.0.1] org.eclipse.jetty.server.session         : node0 Stopped scavenging
+2022-02-14 18:19:57.771  INFO 20852 --- [RMI TCP Connection(15)-127.0.0.1] o.e.j.s.h.ContextHandler.application     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-02-14 18:19:57.772  INFO 20852 --- [RMI TCP Connection(15)-127.0.0.1] o.e.jetty.server.handler.ContextHandler  : Stopped o.s.b.w.e.j.JettyEmbeddedWebAppContext@11a3a45f{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.11981668842108798542/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],STOPPED}
+2022-02-14 18:19:57.786  INFO 20852 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-14 18:19:57.803  INFO 20852 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-14 18:20:05.878  INFO 9348 --- [main] c.d.springweb.ProductrestapiApplication  : Starting ProductrestapiApplication using Java 17 on DESKTOP-7E5NJS8 with PID 9348 (C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi\target\classes started by P101SGPH1 in C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\productrestapi)
+2022-02-14 18:20:05.880  INFO 9348 --- [main] c.d.springweb.ProductrestapiApplication  : No active profile set, falling back to default profiles: default
+2022-02-14 18:20:07.217  INFO 9348 --- [main] org.eclipse.jetty.util.log               : Logging initialized @2627ms to org.eclipse.jetty.util.log.Slf4jLog
+2022-02-14 18:20:07.360  INFO 9348 --- [main] org.eclipse.jetty.server.Server          : jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 17+35
+2022-02-14 18:20:07.384  INFO 9348 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring embedded WebApplicationContext
+2022-02-14 18:20:07.574  INFO 9348 --- [main] org.eclipse.jetty.server.session         : DefaultSessionIdManager workerName=node0
+2022-02-14 18:20:07.574  INFO 9348 --- [main] org.eclipse.jetty.server.session         : No SessionScavenger set, using defaults
+2022-02-14 18:20:07.575  INFO 9348 --- [main] org.eclipse.jetty.server.session         : node0 Scavenging every 600000ms
+2022-02-14 18:20:07.582  INFO 9348 --- [main] o.e.jetty.server.handler.ContextHandler  : Started o.s.b.w.e.j.JettyEmbeddedWebAppContext@6d0290d8{application,/productapi,[file:///C:/Users/ChristianCruz/AppData/Local/Temp/jetty-docbase.8080.7251643026260595214/, jar:file:/C:/Users/ChristianCruz/.m2/repository/org/webjars/swagger-ui/4.5.0/swagger-ui-4.5.0.jar!/META-INF/resources],AVAILABLE}
+2022-02-14 18:20:07.583  INFO 9348 --- [main] org.eclipse.jetty.server.Server          : Started @2994ms
+2022-02-14 18:20:07.659  WARN 9348 --- [main] c.h.i.impl.HazelcastInstanceFactory      : Hazelcast is starting in a Java modular environment (Java 9 and newer) but without proper access to required Java packages. Use additional Java arguments to provide Hazelcast access to Java internal API. The internal API access is used to get the best performance results. Arguments to be used:
+ --add-modules java.se --add-exports java.base/jdk.internal.ref=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.nio=ALL-UNNAMED --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.management/sun.management=ALL-UNNAMED --add-opens jdk.management/com.sun.management.internal=ALL-UNNAMED
+2022-02-14 18:20:07.771  INFO 9348 --- [main] com.hazelcast.system                     : [192.168.1.23]:5701 [dev] [4.2.4] Hazelcast 4.2.4 (20211220 - 25f0049) starting at [192.168.1.23]:5701
+2022-02-14 18:20:08.095  INFO 9348 --- [main] c.h.s.d.integration.DiscoveryService     : [192.168.1.23]:5701 [dev] [4.2.4] No discovery strategy is applicable for auto-detection
+2022-02-14 18:20:08.189  INFO 9348 --- [main] com.hazelcast.instance.impl.Node         : [192.168.1.23]:5701 [dev] [4.2.4] Using Multicast discovery
+2022-02-14 18:20:08.193  WARN 9348 --- [main] com.hazelcast.cp.CPSubsystem             : [192.168.1.23]:5701 [dev] [4.2.4] CP Subsystem is not enabled. CP data structures will operate in UNSAFE mode! Please note that UNSAFE mode will not provide strong consistency guarantees.
+2022-02-14 18:20:08.397  INFO 9348 --- [main] c.h.internal.diagnostics.Diagnostics     : [192.168.1.23]:5701 [dev] [4.2.4] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+2022-02-14 18:20:08.403  INFO 9348 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTING
+2022-02-14 18:20:10.984  INFO 9348 --- [main] c.h.internal.cluster.ClusterService      : [192.168.1.23]:5701 [dev] [4.2.4] 
+
+Members {size:1, ver:1} [
+	Member [192.168.1.23]:5701 - 85edcc91-c7de-42f4-a4a4-175fc2e8a8c9 this
+]
+
+2022-02-14 18:20:10.993  INFO 9348 --- [main] com.hazelcast.core.LifecycleService      : [192.168.1.23]:5701 [dev] [4.2.4] [192.168.1.23]:5701 is STARTED
+2022-02-14 18:20:11.104  INFO 9348 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-14 18:20:11.322  INFO 9348 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-14 18:20:11.391  INFO 9348 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-14 18:20:11.441  INFO 9348 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.4.Final
+2022-02-14 18:20:11.632  INFO 9348 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-14 18:20:11.781  INFO 9348 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-14 18:20:12.271  INFO 9348 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-14 18:20:13.706  INFO 9348 --- [main] o.e.j.s.h.ContextHandler.application     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-14 18:20:13.722  INFO 9348 --- [main] o.e.jetty.server.AbstractConnector       : Started ServerConnector@7f287b98{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2022-02-14 18:20:13.742  INFO 9348 --- [main] c.d.springweb.ProductrestapiApplication  : Started ProductrestapiApplication in 8.216 seconds (JVM running for 9.154)
+2022-02-14 18:20:14.420  INFO 9348 --- [qtp270313690-34] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 177 ms
