@@ -2,7 +2,12 @@
 
 [Spring Boot Fundamentals](https://www.udemy.com/course/springbootfundamentals/)
 
+# Certificate of Completion
+
+![Certificate of Completion](UC-56cbd469-a78c-4e39-a700-c69cce72e38c.png)
+
 - [Spring Boot Fundamentals](#spring-boot-fundamentals)
+- [Certificate of Completion](#certificate-of-completion)
   - [Spring Boot Basics](#spring-boot-basics)
       - [Creating a Starter REST endpoint](#creating-a-starter-rest-endpoint)
       - [@SpringBootApplication](#springbootapplication)
