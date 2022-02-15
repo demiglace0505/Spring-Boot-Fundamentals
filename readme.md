@@ -1369,3 +1369,21 @@ public class VaccineWebController {
 }
 
 ```
+
+```html
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Vaccine Details</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Vaccines</th>
+      </tr>
+      <tr th:each="vaccine : ${vaccines}">
+        <td th:text="${vaccine.name}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
+```
