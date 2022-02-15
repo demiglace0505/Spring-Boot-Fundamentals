@@ -4,7 +4,7 @@
 
 # Certificate of Completion
 
-![Certificate of Completion](UC-56cbd469-a78c-4e39-a700-c69cce72e38c.png)
+![Certificate of Completion](UC-56cbd469-a78c-4e39-a700-c69cce72e38c.jpg)
 
 - [Spring Boot Fundamentals](#spring-boot-fundamentals)
 - [Certificate of Completion](#certificate-of-completion)
