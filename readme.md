@@ -1594,3 +1594,84 @@ class ReactivemongodemoApplicationTests {
 ```
 
 ## RSockets
+
+HTTP is a application layer (layer 7 protocol) based on the request-response paradigm which is not reactive. Websockets allow asynchronous bidirectional communication, but that is still not reactive. Netflix introduced RSockets and supports reactive streams with non blocking back pressure. RSockets can work on top up TCP, WebSockets and Aeron. There are 4 Paradigms with RSockets:
+
+1. Request/Response
+2. Fire and Forget
+3. Request/Stream
+4. Channel
+
+The dependency needed to create an RSocket server is **spring-boot-starter-rsocket**. We annotate our Controller class with the **@Controller** annotation and our methods with **@MessageMapping** where we provide a route that the client will use for communication. We need to specify in application.properties that we will run our RSocket server on port 7000 `spring.rsocket.server.port=7000`.
+
+```java
+@Controller
+public class RSocketPatientController {
+	Logger logger = LoggerFactory.getLogger(RSocketPatientController.class);
+
+	@MessageMapping("get-patient-data")
+	public Mono<ClinicalData> requestResponse(@RequestBody Patient patient) {
+		logger.info("Received Patient: " + patient);
+		return Mono.just(new ClinicalData(90, "80/120"));
+	}
+}
+```
+
+For the client, we will be creating a separate project. We will expose out a RESTful api that once reached out by the client, the RSocket client will connect to the server. We will be adding dependency **spring-boot-starter-webflux** in addition to **spring-boot-starter-rsocket**. We will use **RSocketRequester** class from Spring which is a wrapper around RSocket which makes it easy for us to communicate with the RSocket endpoint.
+
+```java
+@RestController
+public class RSocketPatientClientController {
+	private RSocketRequester rSocketRequester;
+	Logger logger = LoggerFactory.getLogger(RSocketPatientClientController.class);
+
+	public void RSocketPatientClienController(@Autowired RSocketRequester.Builder builder) {
+		this.rSocketRequester = builder.tcp("localhost", 7000);
+	}
+
+	@GetMapping("/request-response")
+	public Mono<ClinicalData> requestResponse(Patient patient) {
+		logger.info("Sending the RSocket request for patient " + patient);
+		return rSocketRequester.route("get-patient-data").data(patient).retrieveMono(ClinicalData.class);
+	};
+}
+```
+
+We can now run both our server and client. Once we send the patient data to `/request-response`, we will see the patient data 90, 80/120 will be returned back to the client.
+
+Another method we can create is for Fire and Forget and Request/Stream.
+
+```java
+	@MessageMapping("patient-checkout")
+	public Mono<Void> fireAndForget(Patient patient) {
+		logger.info("Patient checking out: " + patient);
+		logger.info("Billing Initiated");
+		return Mono.empty().then();
+	}
+
+	@MessageMapping("claim-stream")
+	public Flux<Claim> requestStream() {
+		return Flux.just(new Claim(1000f, "MRI"),
+				new Claim(2000f, "Surgery"),
+				new Claim(500f, "XRay"))
+				.delayElements(Duration.ofSeconds(2));
+	}
+```
+
+And for the client code:
+
+```java
+  @PostMapping("/fire-and-forget")
+	public Mono<Void> fireAndForget(@RequestBody Patient patient) {
+		logger.info("Patient Being Checked out: " + patient);
+		return rSocketRequester.route("patient-checkout").data(patient).retrieveMono(Void.class);
+	}
+
+  @GetMapping("/request-stream")
+	public ResponseEntity<Flux<Claim>> requestStream() {
+		Flux<Claim> data = rSocketRequester.route("claim-stream").retrieveFlux(Claim.class);
+		return ResponseEntity.ok()
+				.contentType(MediaType.TEXT_EVENT_STREAM)
+				.body(data);
+	}
+```
