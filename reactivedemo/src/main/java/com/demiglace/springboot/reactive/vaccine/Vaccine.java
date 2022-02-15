@@ -4,6 +4,15 @@ public class Vaccine {
 	private String name;
 	private boolean delivered;
 	
+	@Override
+	public boolean equals(Object obj) {
+		Vaccine vaccine = null;
+		if (obj instanceof Vaccine) {
+			vaccine = (Vaccine)obj;
+		}
+		return this.name.equals(vaccine.name);
+	}
+	
 	public Vaccine(String name) {
 		this.name = name;
 	}

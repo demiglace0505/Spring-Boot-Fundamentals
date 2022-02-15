@@ -33,6 +33,10 @@
       - [REST Template API](#rest-template-api)
   - [Spring Reactive Programming](#spring-reactive-programming)
       - [Spring Webflux](#spring-webflux)
+  - [Reactive MongoDB](#reactive-mongodb)
+  - [Reactive Testing](#reactive-testing)
+      - [Unit Testing API](#unit-testing-api)
+  - [RSockets](#rsockets)
 
 ## Spring Boot Basics
 
@@ -1387,3 +1391,206 @@ public class VaccineWebController {
   </body>
 </html>
 ```
+
+## Reactive MongoDB
+
+In a reactive architecture, every component should be reactive. MongoDB and Cassandra supports reactivivity. MongoDB uses unstructured data and stores them as Collections/Documents in JSON-like format. In ORM, one class will be mapped to one Document, and one object will be one JSON row.
+
+To create a dynamic RESTful API that uses mongoDB, we use the dependencies **Spring Reactive Web** and **Spring Data Reactive MongoDB**. Our entity will be annotated with **@Document** from Spring instead of @Entity. Our repository interface should extend the **ReactiveMongoRepository** class. This returns Fluxes and Monos instead of lists.
+
+```java
+@Document
+public class Product {
+	@Id
+	private String id;
+	private String name;
+	private String description;
+	private Double price;
+}
+
+public interface ProductRepository extends ReactiveMongoRepository<Product, String> {
+
+}
+```
+
+We then proceed on implementing the RESTful controller class.
+
+```java
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+
+	@Autowired
+	private ProductRepository repo;
+
+	@PostMapping
+	public Mono<Product> addProduct(@RequestBody Product product) {
+		return repo.save(product);
+	}
+
+	@GetMapping
+	public Flux<Product> getProducts() {
+		return repo.findAll();
+	}
+}
+```
+
+We can write out a test class to test our RESTful API. We add the following configuration to application.properties. This will create the ecommerce database. Once this is configured, we can try sending POST and GET requests to localhost:8080 via Postman.
+
+```
+spring.data.mongodb.uri=mongodb://localhost/ecommerce
+```
+
+## Reactive Testing
+
+We first override our Vaccine class equals method to compare the name of two vaccines names, and if the same, will return true.
+
+```java
+public class Vaccine {
+	@Override
+	public boolean equals(Object obj) {
+		Vaccine vaccine = null;
+		if (obj instanceof Vaccine) {
+			vaccine = (Vaccine)obj;
+		}
+		return this.name.equals(vaccine.name);
+	}
+```
+
+The **reactor-test** dependency gives us the class **StepVerifier** which will act as a subscriber for us and help in kickstarting the data flow. The following test will check if a flux with objects Pfizer, J&J, Moderna will be returned by the VaccineProvider. The entire flow will only start when .verify() is invoked. Using **expectNextCount()** we can verify that there will be 2 records in this case after the previous subscription. We can also use **assertNext** which takes a lambda function to write multiple assertions.
+
+```java
+@SpringBootTest
+class ReactivedemoApplicationTests {
+	@Autowired
+	VaccineProvider provider;
+
+	@Test
+	void testVaccineProvider_reactive() {
+		StepVerifier.create(provider.provideVaccines())
+			.expectSubscription()
+			.expectNext(new Vaccine("Pfizer"))
+			.expectNext(new Vaccine("J&J"))
+			.expectNext(new Vaccine("Moderna"))
+			.expectComplete()
+			.verify();
+	}
+
+	@Test
+	void testVaccineProvider_reactive_expectNextCount() {
+		StepVerifier.create(provider.provideVaccines())
+			.expectNext(new Vaccine("Pfizer"))
+			.expectNextCount(2)
+			.expectComplete()
+			.verify();
+	}
+
+	@Test
+	void testVaccineProvider_reactive_assertThat() {
+		StepVerifier.create(provider.provideVaccines())
+			.expectSubscription()
+			.assertNext(vaccine->{
+				assertThat(vaccine.getName()).isNotNull();
+				assertTrue(vaccine.isDelivered());
+				assertEquals("Pfizer", vaccine.getName());
+			})
+			.expectNext(new Vaccine("J&J"))
+			.expectNext(new Vaccine("Moderna"))
+			.expectComplete()
+			.verify();
+	}
+```
+
+#### Unit Testing API
+
+The previous test were integration tests. When doing unit testing, we will be mocking the provider and calls. Mockito will allow us to mock the next layer, in this case, service so that we can test the current layer VaccineProvider. We will be annotating VaccineService with **@MockBean** annotation. We will intercept the service call using the **when()** method and return Fluxes of Vaccine objects so that it will be used instead when the _provider.provideVaccines()_ method is invoked.
+
+```java
+@SpringBootTest
+class VaccineProviderTest {
+	@Autowired
+	VaccineProvider provider;
+
+	@MockBean
+	VaccineService service;
+
+	@Test
+	void testVaccineProvider_reactive() {
+		when(service.getVaccines()).thenReturn(Flux.just(new Vaccine("Pfizer"), new Vaccine("J&J"), new Vaccine("Moderna")));
+		StepVerifier.create(provider.provideVaccines())
+			.expectSubscription()
+			.expectNext(new Vaccine("Pfizer"))
+			.expectNext(new Vaccine("J&J"))
+			.expectNext(new Vaccine("Moderna"))
+			.expectComplete()
+			.verify();
+	}
+}
+```
+
+We can also unit test our VaccineController class. Like the previous test, this controller also uses the VaccineService so we also need to annotate it with **@MockBean**. We can use Mockito Verify to verify that when our test method really calls from the mocked objects.
+
+```java
+@SpringBootTest
+class VaccineControllerTest {
+
+	@Autowired
+	VaccineController controller;
+
+	@MockBean
+	VaccineService service;
+
+	@Test
+	void testGetVaccines() {
+		when(service.getVaccines()).thenReturn(Flux.just(new Vaccine("Pfizer"), new Vaccine("J&J"), new Vaccine("Moderna")));
+		StepVerifier.create(controller.getVaccines())
+			.expectNextCount(3)
+			.expectComplete()
+			.verify();
+    verify(service).getVaccines();
+	}
+}
+```
+
+In the reactivemongodemo project, we can also write out tests for our ProductController. We will be mocking out our ProductRepository using **@MockBean**
+
+```java
+@SpringBootTest
+class ReactivemongodemoApplicationTests {
+	@Autowired
+	ProductController controller;
+
+	@MockBean
+	ProductRepository repo;
+
+	@Test
+	void testAddProduct() {
+		Product product = new Product(null, "Legion", "Gaming Laptop", 2000d);
+		Product savedProduct = new Product("abc123", "Legion", "Gaming Laptop", 2000d);
+		when(repo.save(product)).thenReturn(Mono.just(savedProduct));
+
+		StepVerifier.create(controller.addProduct(product))
+			.assertNext(p->{
+				assertNotNull(p);
+				assertNotNull(p.getId());
+				assertEquals("abc123", p.getId());
+			})
+			.expectComplete().verify();
+    verify(repo).save(product);
+	}
+
+	@Test
+	void testGetProducts() {
+		when(repo.findAll()).thenReturn(Flux.just(
+				new Product("abc123", "Legion", "Gaming Laptop", 2000d),
+				new Product("abc456", "Legion", "Gaming Laptop", 2000d),
+				new Product("abc789", "Legion", "Gaming Laptop", 2000d)));
+		StepVerifier.create(controller.getProducts())
+			.expectNextCount(3)
+			.expectComplete()
+			.verify();
+		verify(repo).findAll();
+	}
+```
+
+## RSockets
