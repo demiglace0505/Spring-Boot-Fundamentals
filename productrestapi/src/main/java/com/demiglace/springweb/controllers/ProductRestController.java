@@ -2,6 +2,8 @@ package com.demiglace.springweb.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,7 @@ public class ProductRestController {
 	}
 
 	@RequestMapping(value = "/products/", method = RequestMethod.POST)
-	public Product createProduct(@RequestBody Product product) {
+	public Product createProduct(@Valid @RequestBody Product product) {
 		return repository.save(product);
 	}
 

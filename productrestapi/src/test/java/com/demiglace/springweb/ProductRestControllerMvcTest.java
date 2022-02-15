@@ -35,7 +35,7 @@ public class ProductRestControllerMvcTest {
 	
 	private static final String PRODUCT_URL = "/productapi/products/";
 	private static final String CONTEXT_URL = "/productapi";
-	private static final double PRODUCT_PRICE = 2000d;
+	private static final int PRODUCT_PRICE = 2000;
 	private static final String PRODUCT_DESCRIPTION = "Gaming Laptop";
 	private static final String PRODUCT_NAME = "Legion";
 	private static final int PRODUCT_ID = 1;

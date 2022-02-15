@@ -28,6 +28,11 @@
       - [Messaging Models](#messaging-models)
       - [JMS](#jms)
   - [Swagger](#swagger)
+  - [Validations](#validations)
+  - [REST File Upload and Download](#rest-file-upload-and-download)
+      - [REST Template API](#rest-template-api)
+  - [Spring Reactive Programming](#spring-reactive-programming)
+      - [Spring Webflux](#spring-webflux)
 
 ## Spring Boot Basics
 
@@ -1063,7 +1068,7 @@ We can add more information in our Swagger UI using Swagger Annotations. One suc
 public class ProductrestapiApplication {
 ```
 
-The **@Tag** and annotation is used in our REST controllers at the class level, **@Operation** at method level, **@Parameter** at parameter level, **@ApiResponse** at the return object.
+The **@Tag** and annotation is used in our REST controllers at the class level, **@Operation** at method level, **@Parameter** at parameter level, **@ApiResponse** at the return object. If we want to hide a REST operation or the complete REST endpoint, we use the **@Hidden** annotation.
 
 ```java
 @RestController
@@ -1075,6 +1080,12 @@ public class ProductRestController {
 	@Autowired
 	ProductRepository repository;
 
+  @RequestMapping(value = "/products/", method = RequestMethod.GET)
+	@Hidden
+	public List<Product> getProducts() {
+		return repository.findAll();
+	}
+
 	@Cacheable("product-cache")
 	@Transactional(readOnly = true)
 	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
@@ -1085,4 +1096,276 @@ public class ProductRestController {
 	}
 ```
 
-If we want to hide a REST operation or the complete REST endpoint, we use the **@Hidden** annotation.
+## Validations
+
+The Java standard provides us with the validation-api which is implemented by hibernate-validator. For this, we will be using **spring-boot-starter-validation** which will automatically pull the validation-api and hibernate-validator. We then use the **@Valid** annotation on our controller method to enable validation. We will then have to write out the validation logic in the Product declaration.
+
+```java
+public class ProductRestController {
+	@Autowired
+	ProductRepository repository;
+
+	@RequestMapping(value = "/products/", method = RequestMethod.POST)
+	public Product createProduct(@Valid @RequestBody Product product) {
+		return repository.save(product);
+	}
+
+@Entity
+public class Product implements Serializable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@NotNull
+	private String name;
+	@Size(max = 100)
+	private String description;
+	@Size(min = 1, message = "The minimum price should be 1")
+	private double price
+```
+
+## REST File Upload and Download
+
+When we upload files using POST requests, the request will be split into multiple parts and sent as multi-part data. Spring Web is the only dependency needed for this project. We start with creating the controller class, which we mark with **@RestController** and then define a method for uploading and downloading a file. The upload method will take in a MultipartFile from Spring and we can use the transferTo() method. For the download method, it will return a **ResponseEntity** object wherein we will use **Files.readAllBytes()** from java.nio.
+
+```properties
+#application.properties
+uploadDir=C:\Users\ChristianCruz\Documents\Christian\projects\Spring-Boot-Fundamentals\restfileprocessing
+```
+
+```java
+@RestController
+public class FileController {
+
+	@Value("${uploadDir}")
+	private String UPLOAD_DIR;
+
+	@PostMapping("/upload")
+	public boolean upload(@RequestParam("file") MultipartFile file) throws IllegalStateException, IOException {
+		file.transferTo(new File(UPLOAD_DIR + file.getOriginalFilename()));
+		return true;
+	}
+
+	@GetMapping("/download/{fileName}")
+	public ResponseEntity<byte[]> download(@PathVariable("fileName") String fileName) throws IOException {
+		byte[] fileData = Files.readAllBytes(new File(UPLOAD_DIR + fileName).toPath());
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.IMAGE_JPEG);
+		return new ResponseEntity<byte[]>(fileData,headers,HttpStatus.OK);
+	}
+}
+```
+
+#### REST Template API
+
+Using REST Template, we will be writing out the test for upload and download functionality. For testing the upload functionality, we are using the Rest Template **postForEntity()** method wherein we pass the URL, HTTP entity, and the class of the response object. HttpEntity takes in the body and response. We pass in a MULTIPART_FORM_DATA as the header type, and for the body we use the MultiValueMap implementation of **LinkedMultiValueMap**
+
+```java
+@SpringBootTest
+class RestfileprocessingApplicationTests {
+	private static final String DOWNLOAD_PATH = "C:\\Users\\ChristianCruz\\Documents\\Christian\\projects\\Spring-Boot-Fundamentals\\restfileprocessing";
+	private static final String DOWNLOAD_URL = "http://localhost:8080/download/";
+	private static final String FILE_UPLOAD_URL = "http://localhost:8080/upload";
+	@Autowired
+	RestTemplate restTemplate;
+
+	@Test
+	void testUpload() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+		MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+		body.add("file",new ClassPathResource("froge.jpg"));
+
+		HttpEntity<MultiValueMap<String, Object>> httpEntity = new HttpEntity<>(body, headers);
+
+		ResponseEntity<Boolean> response = restTemplate.postForEntity(FILE_UPLOAD_URL, httpEntity, Boolean.class);
+		System.out.println(response.getBody());
+	}
+
+	@Test
+	void testDownload() throws IOException {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_OCTET_STREAM));
+
+		HttpEntity<String> httpEntity = new HttpEntity<>(headers);
+
+		String fileName="froge.jpg";
+
+		ResponseEntity<byte[]> response = restTemplate.exchange(DOWNLOAD_URL + fileName, HttpMethod.GET, httpEntity, byte[].class);
+
+		Files.write(Paths.get(DOWNLOAD_PATH + fileName), response.getBody());
+	}
+}
+```
+
+## Spring Reactive Programming
+
+The Reactive Stream Specification adds the concept of Backpressure along with Asynchronous and Non Blocking communication. Back Pressure is where the subscriber application which consumes the data will have the ability to specify how much data it can consume at a given point in time, which gives the capability of avoiding crashing. **Spring Reactor** is the implementation of the Reactive Stream Specification which automatically handles Back Pressure for us.
+
+The necessary dependency for this project is **spring-boot-starter-webflux** which automatically pulls **reactor-test** along. It offers two Publisher classes: **Flux** and **Mono**. Flux publishes any number of elements whereas Mono can produce 0 to 1 elements only. The **just()** method allows us to publish data to which we subscribe a **Consumer** to. The delayElements() method allows us to insert a delay between objects. The Flux.fromIterable() method allows us to create a Flux from an iterable list.
+
+```java
+@SpringBootTest
+class ReactivedemoApplicationTests {
+
+	@Test
+	void testMono() {
+		Mono<String> mono = Mono.just("Legion 5");
+		mono.log().map(data -> data.toUpperCase()).subscribe(data -> System.out.println(data));
+	}
+
+	@Test
+	void testFlux() throws InterruptedException {
+		Flux.fromIterable(Arrays.asList("Legion 5", "Ryzen 5", "GTX 1650"))
+			.delayElements(Duration.ofSeconds(2))
+			.log().map(data -> data.toUpperCase())
+			.subscribe(new OrderConsumer());
+
+		Thread.sleep(6000);
+	}
+}
+
+public class OrderConsumer implements Consumer<String> {
+	@Override
+	public void accept(String data) {
+		System.out.println(data);
+	}
+}
+```
+
+We can also use a **Subscriber** and **Subscription** from reactivestreams for the subscribe method. For this case, we implement an anonymous class, but we can create a separate class if we want to. The request() method allows us to do batching and tells the publisher how many elements it can handle.
+
+```java
+.subscribe(new Subscriber<String>() {
+				private long count = 0;
+				private Subscription subscription;
+
+				@Override
+				public void onSubscribe(Subscription subscription) {
+					this.subscription = subscription;
+					subscription.request(3);
+				}
+
+				@Override
+				public void onNext(String order) {
+					count++;
+					if (count >= 3) {
+						count = 0;
+						subscription.request(3);
+					};
+					System.out.println(order);
+				}
+
+				@Override
+				public void onError(Throwable t) {
+					t.printStackTrace();
+				}
+
+				@Override
+				public void onComplete() {
+					System.out.println("COMPLETED");
+				}
+			});
+```
+
+For the use case, we first create a model Vaccine class and a Service class.
+
+```java
+public class Vaccine {
+	private String name;
+	private boolean delivered;
+
+	public Vaccine(String name) {
+		this.name = name;
+	}
+  ...
+}
+
+@Service
+public class VaccineService {
+	public Flux<Vaccine> getVaccines() {
+		return Flux.just(new Vaccine("Pfizer"), new Vaccine("J&J"), new Vaccine("Moderna"));
+	}
+}
+```
+
+We then proceed with the Provider class that will be responsible for delivering the Vaccines.
+
+```java
+@Component
+public class VaccineProvider {
+	@Autowired
+	private VaccineService service;
+
+	private Vaccine deliver(Vaccine vaccine) {
+		vaccine.setDelivered(true);
+		return vaccine;
+	}
+
+	public Flux<Vaccine> provideVaccines() {
+		return service.getVaccines().map(this::deliver);
+	}
+}
+```
+
+For the test, we write out the following method wherein we subscribe with a consumer that implements Consumer.
+
+```java
+@SpringBootTest
+class ReactivedemoApplicationTests {
+
+	@Autowired
+	VaccineProvider provider;
+
+	@Test
+	void testVaccineProvider() {
+		provider.provideVaccines().subscribe(new VaccineConsumer());
+	}
+  ...
+}
+
+public class VaccineConsumer implements Consumer<Vaccine> {
+	@Override
+	public void accept(Vaccine vaccine) {
+		System.out.println(vaccine.getName());
+		System.out.println(vaccine.isDelivered());
+	}
+}
+```
+
+#### Spring Webflux
+
+spring-boot-starter-webflux uses Netty container because servlet-api is blocking and not reactive. The Data Access Layer returns back a Mono or Flux object which will come back to the controller and the Netty container will take care of the subscription and handle the backpressure and send a response to the client.
+
+In creating a reactive REST api, we start with the controller class. We dopn't have to manually subscribe anymore since Spring Webflux will subscribe to the Flux for us, and whenever the data is ready, it will be converted to whatever format it should be, in this case JSON, and sends it back.
+
+```java
+@RestController
+public class VaccineController {
+
+	@Autowired
+	private VaccineService service;
+
+	@GetMapping("/vaccines")
+	public Flux<Vaccine> getVaccines() {
+		return service.getVaccines();
+	}
+}
+```
+
+For the web layer, we need the Thymeleaf dependency and to add the Web Controller for it. Instead of returning a String, we need to return a Mono of type String using Mono.just().
+
+```java
+@Controller
+public class VaccineWebController {
+	@Autowired
+	private VaccineService service;
+
+	@GetMapping("/")
+	public Mono<String> getVaccines(Model model) {
+		model.addAttribute("vaccines", service.getVaccines());
+		return Mono.just("index");
+	}
+}
+
+```

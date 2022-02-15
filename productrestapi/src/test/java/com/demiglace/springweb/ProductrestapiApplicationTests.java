@@ -31,7 +31,7 @@ class ProductrestapiApplicationTests {
 		Product product = new Product();
 		product.setName("LG G6");
 		product.setDescription("great phone");
-		product.setPrice(200d);
+		product.setPrice(200);
 		Product newProduct = restTemplate.postForObject(baseURL, product,
 				Product.class);
 		assertNotNull(newProduct);
@@ -43,7 +43,7 @@ class ProductrestapiApplicationTests {
 	public void testUpdateProduct() {
 		RestTemplate restTemplate = new RestTemplate();
 		Product product = restTemplate.getForObject(baseURL + "1", Product.class);
-		product.setPrice(279d);
+		product.setPrice(279);
 		restTemplate.put(baseURL, product);
 	}
 }
